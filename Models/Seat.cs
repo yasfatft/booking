@@ -1,4 +1,4 @@
-namespace Domain.Models
+namespace Models
 {
     public class Seat
     {

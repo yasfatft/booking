@@ -1,5 +1,5 @@
 using System;
-namespace Domain.Models
+namespace Models
 {
     public class Show
     {   
