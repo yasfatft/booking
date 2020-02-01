@@ -9,6 +9,6 @@ namespace Models
         public String Summary { get; set; }
         public int Price { get; set; }
         public int SalonId { get; set; }
-        public int Salon { get; set; }
+        public Salon Salon { get; set; }
     }
 }
