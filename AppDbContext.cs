@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
+using Booking.Models;
 
-namespace cinema2.Domain.Persistence.Contexts
+namespace Booking
 {
     public class AppDbContext : DbContext
     {
@@ -54,7 +54,6 @@ namespace cinema2.Domain.Persistence.Contexts
             builder.Entity<Ticket>().Property(p => p.UserId).IsRequired();
             // builder.Entity<Ticket>().HasOne(p => p.Seat).WithMany(p => p.Tickets).HasForeignKey(p => p.SeatId);
         }
-
 
     }
 }

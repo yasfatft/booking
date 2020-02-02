@@ -1,5 +1,6 @@
 using System;
-namespace Models
+
+namespace Booking.Models
 {
     public class Show
     {   
