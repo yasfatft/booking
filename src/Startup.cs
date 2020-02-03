@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+using System.Linq; using System.Threading.Tasks; using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +26,7 @@ namespace Booking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(opts =>
-                opts.UseNpgsql(Configuration["ConnectionStrings:booking"]));
+                opts.UseNpgsql(Configuration["ConnectionStrings:Booking"]));
 
             services.AddControllers();
         }
