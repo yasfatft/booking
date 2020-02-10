@@ -6,11 +6,11 @@ namespace Booking
     public class AppDbContext : DbContext
     {
 
-        public DbSet<Show> shows { get; set; }
-        public DbSet<Salon> salons { get; set; }
+        public DbSet<Show> Shows { get; set; }
+        public DbSet<Salon> Salons { get; set; }
 
-        public DbSet<Ticket> tickets { get; set; }
-        public DbSet<Seat> seats { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<Seat> Seat { get; set; }
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
@@ -27,7 +27,7 @@ namespace Booking
             builder.Entity<Show>().Property(p => p.EndTime).IsRequired();
             builder.Entity<Show>().Property(p => p.Summary).IsRequired();
             builder.Entity<Show>().Property(p => p.Price).IsRequired();
-            builder.Entity<Show>().Property(p => p.SalonId).IsRequired();
+            builder.Entity<Show>().Property(p => p.SalonId);
            
            
             builder.Entity<Seat>().ToTable("seat");
