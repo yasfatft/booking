@@ -8,9 +8,8 @@ namespace Booking
 
         public DbSet<Show> Shows { get; set; }
         public DbSet<Salon> Salons { get; set; }
-
-        public DbSet<Ticket> Ticket { get; set; }
-        public DbSet<Seat> Seat { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Seat> Seats { get; set; }
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}

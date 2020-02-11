@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Booking.Models;
 namespace Booking.Controllers
 {
-    [Route ("/salon")]
+    [Route ("/salons")]
     [ApiController]
     public class SalonController:Controller
     {

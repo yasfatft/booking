@@ -6,7 +6,7 @@ using Booking.Models;
 using System.Linq;
 namespace Booking.Controllers
 {
-    [Route ("/show")]
+    [Route ("/shows")]
     [ApiController]
     public class ShowsController:Controller
     {
@@ -21,30 +21,38 @@ namespace Booking.Controllers
         [HttpPost]
         public ActionResult <string> CreateShow([FromBody]Show show)
         {  
-           // var asgharShow = _context.show.Find(show.StartTime);
+
             var testShow =_context.Shows.Find(show.Id);
+
             if(testShow!=null)
             {
                 return Conflict();
             }
+
             if(show.StartTime.Hour>=show.EndTime.Hour)
             {
                 return BadRequest();
             }
+
             if(show.Price < 0)
             {
                 return BadRequest();
             }
+
             if(show.StartTime<=DateTime.Now)
             {
                 return BadRequest();
             }
+
             var salonId=_context.Salons.Find(show.SalonId);
+
             if(salonId==null)
             {
                 return BadRequest();
             }
+
             char[] titleCharacters=show.Title.ToCharArray();
+
             if(titleCharacters.Length>10)
             {
                 return BadRequest();
@@ -53,24 +61,27 @@ namespace Booking.Controllers
             {
                 return BadRequest();
             }
+
             var showTime=show.EndTime-show.StartTime;
+
             if(showTime<MinimumTime||showTime>MaximumTime)
             {
                 return BadRequest();
 
             }
+
             bool hasConflict = DefinedShowHaveConflict(show);
+
             if(hasConflict)
             {
                 return Conflict();
             }
+
             _context.Shows.Add(show);
             _context.SaveChanges();
             return Ok();
         }
         
-
-
         public bool DefinedShowHaveConflict(Show show){
 
             IEnumerable<Show> query =
