@@ -16,7 +16,8 @@ namespace test
                 EndTime="2017-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
-                SalonId="1"
+                SalonId="1",
+                Title = "fhdajlk"
             };
             new RestAssured()
             .Given()
@@ -40,7 +41,8 @@ namespace test
                 EndTime="2017-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
-                SalonId="1"
+                SalonId="1",
+                Title = "fhdajlk"
             };
             new RestAssured()
             .Given()
@@ -62,11 +64,12 @@ namespace test
         {
             var body = new{
                 Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                StartTime = "2020-11-01T02:00:00" ,
+                EndTime="2020-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
-                SalonId="1"
+                SalonId="1",
+                Title = "fhdajlk"
                 
             };
             new RestAssured()
@@ -86,11 +89,12 @@ namespace test
         {
              var body = new{
                 Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                StartTime = "2020-11-01T01:00:00" ,
+                EndTime="2020-11-01T02:00:00", 
                 Summary ="jafarshow",
                 Price ="-45",
-                SalonId="1"
+                SalonId="1",
+                Title = "fhdajlk"
                 
             };
             new RestAssured()
@@ -111,11 +115,12 @@ namespace test
         {
             var body = new{
                 Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                StartTime = "2020-11-01T02:00:00" ,
+                EndTime="2020-11-01T01  :00:00", 
                 Summary ="jafarshow",
                 Price ="30",
-                SalonId="1"
+                SalonId="1",
+                Title = "fhdajlk"
                 
             };
             new RestAssured()
@@ -136,11 +141,12 @@ namespace test
         {
             var body = new{
                 Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                StartTime = "2020-11-01T02:00:00" ,
+                EndTime="2020-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
-                SalonId="18"
+                SalonId="18",
+                Title = "fhdajlk"
                 
             };
             new RestAssured()
@@ -161,12 +167,12 @@ namespace test
         {
             var body =new{
                 Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                StartTime = "2020-11-01T00:00:00" ,
+                EndTime="2020-11-01T01:00:00", 
                 Summary ="moretha",
                 Title="woejfnerijnfwirjnfeirjfnerijfnerijfnerifjn",
                 Price ="30",
-                SalonId="18"
+                SalonId="18",
 
             };
             new RestAssured()
@@ -187,11 +193,12 @@ namespace test
         {
             var body =new{
                 Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                StartTime = "2020-11-01T00:00:00" ,
+                EndTime="2020-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="120",
-                SalonId="18"
+                SalonId="18",
+                Title = "fhdajlk"
 
             };
             new RestAssured()
@@ -213,12 +220,12 @@ namespace test
         {
             var body =new{
                 Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T18:00:00", 
+                StartTime = "2020-11-01T00:00:00" ,
+                EndTime="2020-11-01T18:00:00", 
                 Summary ="jafarsh//comparing diffrence between start and end with show timeow",
-                Price ="120",
-                SalonId="1"
-
+                Price ="80",
+                SalonId="1",
+                Title = "fhdajlk"
             };
             new RestAssured()
             .Given()
@@ -238,11 +245,12 @@ namespace test
         {
              var body =new{
                 Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T00:15:00", 
+                StartTime = "2020-11-01T00:00:00" ,
+                EndTime="2020-11-01T00:15:00", 
                 Summary ="jafarshow",
-                Price ="120",
-                SalonId="1"
+                Price ="80",
+                SalonId="1",
+                Title = "fhdajlk"
 
             };
             new RestAssured()
