@@ -126,14 +126,14 @@ namespace test
             };
             new RestAssured()
             .Given()
-                .Name("negative price  test")
+                .Name("start time test")
                 .Header("Content-Type","application/json")
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
                 .Post("http://localhost:5000/api/v1/shows")
                 .Then()
-                .TestStatus("negative price test", b =>  b == 400)
+                .TestStatus("start time test", b =>  b == 400)
                 .AssertAll();
         }
 
@@ -152,14 +152,14 @@ namespace test
             };
             new RestAssured()
             .Given()
-                .Name("negative price  test")
+                .Name("salon id not available test")
                 .Header("Content-Type","application/json")
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
                 .Post("http://localhost:5000/api/v1/shows")
                 .Then()
-                .TestStatus("negative price test", b =>  b == 400)
+                .TestStatus("salon id not available test", b =>  b == 400)
                 .AssertAll();
         }
 
@@ -178,14 +178,14 @@ namespace test
             };
             new RestAssured()
             .Given()
-                .Name("negative price  test")
+                .Name("title  test")
                 .Header("Content-Type","application/json")
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
                 .Post("http://localhost:5000/api/v1/shows")
                 .Then()
-                .TestStatus("negative price test", b =>  b == 400)
+                .TestStatus("title test", b =>  b == 400)
                 .AssertAll();
         }
 
@@ -204,14 +204,14 @@ namespace test
             };
             new RestAssured()
             .Given()
-                .Name("negative price  test")
+                .Name("max price test")
                 .Header("Content-Type","application/json")
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
                 .Post("http://localhost:5000/api/v1/shows")
                 .Then()
-                .TestStatus("negative price test", b =>  b == 400)
+                .TestStatus("max price test", b =>  b == 400)
                 .AssertAll();
         }
 
@@ -229,14 +229,14 @@ namespace test
             };
             new RestAssured()
             .Given()
-                .Name("show time  test")
+                .Name("min show time  test")
                 .Header("Content-Type","application/json")
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
                 .Post("http://localhost:5000/api/v1/shows")
                 .Then()
-                .TestStatus("show time test", b =>  b == 400)
+                .TestStatus("min show time test", b =>  b == 400)
                 .AssertAll();
         }
 
@@ -255,14 +255,14 @@ namespace test
             };
             new RestAssured()
             .Given()
-                .Name("show time  test")
+                .Name("max show time  test")
                 .Header("Content-Type","application/json")
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
                 .Post("http://localhost:5000/api/v1/shows")
                 .Then()
-                .TestStatus("show time test", b =>  b == 400)
+                .TestStatus("max show time test", b =>  b == 400)
                 .AssertAll();
         }
     }
