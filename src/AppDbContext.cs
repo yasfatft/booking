@@ -22,7 +22,7 @@ namespace Booking
             builder.Entity<Show>().ToTable("show");
             builder.Entity<Show>().HasKey(p => p.Id);
             builder.Entity<Show>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            // builder.Entity<Show>().Property(p => p.Title).IsRequired().HasMaxLength(30);
+            builder.Entity<Show>().Property(p => p.Title).IsRequired().HasMaxLength(30);
             builder.Entity<Show>().Property(p => p.StartTime).IsRequired();
             builder.Entity<Show>().Property(p => p.EndTime).IsRequired();
             builder.Entity<Show>().Property(p => p.Summary).IsRequired();

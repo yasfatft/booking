@@ -10,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Booking
 {
     public class Startup
@@ -28,7 +27,7 @@ namespace Booking
             services.AddDbContext<AppDbContext>(opts =>
                 opts.UseNpgsql(Configuration["ConnectionStrings:Booking"]));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
