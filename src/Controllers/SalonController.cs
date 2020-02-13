@@ -26,6 +26,10 @@ namespace Booking.Controllers
                 return BadRequest();
             }
 
+            if (_salonService.isSalonIdDuplicate(salon.Id)){
+                return Conflict();
+            }
+
             _salonService.save(salon);
             return Created("salon created",salon);
         }
