@@ -20,19 +20,16 @@ namespace Booking.Controllers
         public IActionResult post([FromBody]Show show) {
             
             if (show == null) {
-                Console.WriteLine("1");
                 return BadRequest();
             }
 
             if (show.EndTime == null || show.StartTime == null || show.Title == null ||
                 show.Summary == null || show.Price < 0) 
             {
-                Console.WriteLine("2");
                 return BadRequest();
             }
 
             if (show.StartTime <= DateTime.Now) {
-                Console.WriteLine("3");
                 return Conflict();
             }
 
@@ -41,26 +38,24 @@ namespace Booking.Controllers
             }
 
             if (!isSalonAvailable(show.SalonId)) {
-                Console.WriteLine("4");
                 return Conflict();
             }
 
-            if (show.Summary.Length > 250 || show.Title.Length > 40) {
-                Console.WriteLine("5");
+            const int maxSummaryLenght = 250;
+            const int maxTitleLenght = 40;
+            if (show.Summary.Length > maxSummaryLenght || show.Title.Length > maxTitleLenght) {
                 return BadRequest();
             }
 
-            int maxPrice = 100;
+            const int maxPrice = 100;
             if (show.Price > maxPrice) {
-                Console.WriteLine("6");
                 return BadRequest();
             }
 
-            int minShowTime = 30;
-            int maxShowTime = 120;
+            const int  minShowTime = 30;
+            const int maxShowTime = 120;
             int showLenght = (show.EndTime - show.StartTime).Minutes;
             if (showLenght < minShowTime || showLenght > maxShowTime){
-                Console.WriteLine("7");
                 return BadRequest();
             }   
 
