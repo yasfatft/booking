@@ -172,7 +172,7 @@ namespace test
                 Summary ="moretha",
                 Title="woejfnerijnfwirjnfeirjfnerijfnerijfnerifjn",
                 Price ="30",
-                SalonId="18",
+                SalonId="1",
 
             };
             new RestAssured()
@@ -197,7 +197,7 @@ namespace test
                 EndTime="2020-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="120",
-                SalonId="18",
+                SalonId="1",
                 Title = "fhdajlk"
 
             };
