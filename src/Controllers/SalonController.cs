@@ -22,7 +22,7 @@ namespace Booking.Controllers
                 return BadRequest();
             }
 
-            if (salon.Name == null || salon.Name.Equals("") || salon.SeatHeight <= 0 || salon.SeatWidth <= 0) {
+            if (string.IsNullOrEmpty(salon.Name) || salon.SeatHeight <= 0 || salon.SeatWidth <= 0) {
                 return BadRequest();
             }
 
