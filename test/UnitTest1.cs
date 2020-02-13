@@ -59,7 +59,6 @@ namespace test
         }
         
         [Fact]
-
         public void StartTimeGreatarThanEndTimeTest()
         {
             var body = new{
@@ -83,7 +82,8 @@ namespace test
                 .Then()
                 .TestStatus("time test", b =>  b == 400)
                 .AssertAll();
-        }//passed
+        }
+
         [Fact]
         public void NegativePricePost()
         {
@@ -110,6 +110,7 @@ namespace test
                 .AssertAll();
 
         }
+
         [Fact]
         public void StartTimeTest()
         {
@@ -135,8 +136,8 @@ namespace test
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
         }
-        [Fact]
 
+        [Fact]
         public void SalonIdIsNotAvailableTest()
         {
             var body = new{
@@ -161,8 +162,8 @@ namespace test
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
         }
-        [Fact]
 
+        [Fact]
         public void TitleCharacterTest()
         {
             var body =new{
@@ -187,8 +188,8 @@ namespace test
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
         }
-        [Fact]
 
+        [Fact]
         public void PriceCeilingTest()
         {
             var body =new{
@@ -215,7 +216,6 @@ namespace test
         }
 
         [Fact]
-        
         public void MinimumShowTimeTest()
         {
             var body =new{
@@ -265,8 +265,5 @@ namespace test
                 .TestStatus("show time test", b =>  b == 400)
                 .AssertAll();
         }
-
-                    
-
     }
 }
