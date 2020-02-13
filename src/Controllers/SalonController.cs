@@ -10,8 +10,8 @@ namespace Booking.Controllers
     {
         public SalonService _salonService { get; set; }
 
-        public SalonController(SalonService showService) {
-            _salonService = showService;
+        public SalonController(SalonService salonService) {
+            _salonService = salonService;
         }
 
         [HttpPost]
