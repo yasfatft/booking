@@ -29,8 +29,6 @@ namespace Booking
                 opts.UseNpgsql(Configuration["ConnectionStrings:Booking"]));
 
             services.AddControllers().AddNewtonsoftJson();
-            services.AddScoped<ShowService>();
-            services.AddScoped<SalonService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

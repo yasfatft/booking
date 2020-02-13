@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Booking.Models;
-using Booking.Services;
 using System;
+using System.Linq;
 
 namespace Booking.Controllers
 {
@@ -10,10 +10,10 @@ namespace Booking.Controllers
     [ApiController]
     public class ShowController : ControllerBase
     {
-        public ShowService _showService { get; set; }
+        public AppDbContext _appDbContext { get; set; }
 
-        public ShowController(ShowService showService) {
-            _showService = showService;
+        public ShowController(AppDbContext appDbContext) {
+            _appDbContext = appDbContext;
         }
 
         [HttpPost]
@@ -40,7 +40,7 @@ namespace Booking.Controllers
                 return BadRequest();
             }
 
-            if (!_showService.isSalonAvailable(show.SalonId)) {
+            if (!isSalonAvailable(show.SalonId)) {
                 Console.WriteLine("4");
                 return Conflict();
             }
@@ -64,8 +64,19 @@ namespace Booking.Controllers
                 return BadRequest();
             }   
 
-            _showService.save(show);
+            _appDbContext.shows.Add(show);
+            _appDbContext.SaveChanges();
             return Created("show created",show);
+        }
+
+        public bool isSalonAvailable(int salonId) {
+            var salonIds = _appDbContext.salons.Select(s => s.Id);
+            foreach (int id in salonIds) {
+                if (salonId == id) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

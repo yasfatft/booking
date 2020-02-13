@@ -1,6 +1,6 @@
 using Booking.Models;
-using Booking.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Booking.Controllers
 {
@@ -8,10 +8,10 @@ namespace Booking.Controllers
     [ApiController]
     public class SalonController : ControllerBase
     {
-        public SalonService _salonService { get; set; }
+        public AppDbContext _appDbContext { get; set; }
 
-        public SalonController(SalonService salonService) {
-            _salonService = salonService;
+        public SalonController(AppDbContext appDbContext) {
+            _appDbContext = appDbContext;
         }
 
         [HttpPost]
@@ -26,12 +26,23 @@ namespace Booking.Controllers
                 return BadRequest();
             }
 
-            if (_salonService.isSalonIdDuplicate(salon.Id)){
+            if (isSalonIdDuplicate(salon.Id)){
                 return Conflict();
             }
 
-            _salonService.save(salon);
+            _appDbContext.salons.Add(salon);
+            _appDbContext.SaveChanges();
             return Created("salon created",salon);
+        }
+
+         public bool isSalonIdDuplicate(int salonId) {
+            var salonIds = _appDbContext.salons.Select(s => s.Id);
+            foreach (int id in salonIds) {
+                if (salonId == id) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
