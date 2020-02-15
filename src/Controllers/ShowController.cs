@@ -22,52 +22,52 @@ namespace Booking.Controllers
             
             if (requestShow == null)
             {
-                return BadRequest("Null json");
+                return BadRequest("Json should not be null");
             }
 
             if (requestShow.StartTime == null)
             {
-                return BadRequest("Null StartTime");
+                return BadRequest("StartTime should not be null");
             }
 
             if (requestShow.EndTime == null)
             {
-                return BadRequest("Null EndTime");
+                return BadRequest("EndTime should not be null");
             }
 
             if (requestShow.Title == null) 
             {
-                return BadRequest("Null Title");
+                return BadRequest("Title should not be null");
             }
 
             if (requestShow.Summary == null) 
             {
-                return BadRequest("Null Summary");
+                return BadRequest("Summary should not be null");
             }
 
             if (requestShow.Price == null || requestShow.Price < 0) 
             {
-                return BadRequest("Null Price or negetive Price");
+                return BadRequest("Price should not be null or even negetive");
             }
 
             if (requestShow.SalonId == null) 
             {
-                return BadRequest("Null SalonId");
+                return BadRequest("SalonId should not be null");
             }
 
             if (!isSalonAvailable(requestShow.SalonId ?? -1)) 
             {
-                return NotFound("Unavailable SalonId");
+                return NotFound("There is no such a SalonId in database");
             }
                     
             if (requestShow.StartTime <= DateTime.Now) 
             {
-                return BadRequest("StartTime is in past");
+                return BadRequest("StartTime shoud be in future or at the present time not in the past");
             }
 
             if (requestShow.StartTime >= requestShow.EndTime) 
             {
-                return BadRequest("Endtime is before than StartTime");
+                return BadRequest("EndTime should be after StartTime");
             }
             
 
@@ -84,7 +84,7 @@ namespace Booking.Controllers
 
             const int maxPrice = 100;
             if (requestShow.Price > maxPrice) {
-                return BadRequest("Price is over the price threshold");
+                return BadRequest(string.Format("Price is over the price threshold! It must be less than {0}", maxPrice));
             }
 
             const int minShowTime = 30;
@@ -97,11 +97,11 @@ namespace Booking.Controllers
             int showLengthAsMinute = showLength.Minutes;
             if (showLengthAsMinute < minShowTime)
             {
-                return BadRequest("Show period is under minShowTime threshold");
+                return BadRequest(string.Format("Show period is under minShowTime threshold ({0})",minShowTime));
             }
             if (showLengthAsMinute > maxShowTime){
 
-                return BadRequest("Show period is over maxShowTime threshold");
+                return BadRequest(string.Format("Show period is over maxShowTime threshold ({0})",maxShowTime));
             }   
 
             Show show = RequestShowToShowConverter(requestShow);
