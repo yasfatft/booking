@@ -15,34 +15,58 @@ namespace Booking.Controllers
         }
 
         [HttpPost]
-        public IActionResult post([FromBody]Salon salon) {
+        public IActionResult post([FromBody]RequestSalon requestSalon) {
             
             
-            if (salon == null) {
-                return BadRequest();
+            if (requestSalon == null) 
+            {
+                return BadRequest("Json should not be null");
             }
 
-            if (string.IsNullOrEmpty(salon.Name) || salon.SeatHeight <= 0 || salon.SeatWidth <= 0) {
-                return BadRequest();
+            if (string.IsNullOrEmpty(requestSalon.Name)) 
+            {
+                return BadRequest("Name should not be null or empty");
             }
 
-            if (isSalonIdDuplicate(salon.Id)){
-                return Conflict();
+            if (requestSalon.SeatHeight == null)
+            {
+                return BadRequest("SeatHeight should not be null");
             }
 
+            if (requestSalon.SeatWidth == null)
+            {
+                return BadRequest("SeatWidth should not be null");
+            }
+
+            if (requestSalon.SeatHeight <= 0)
+            {
+                return BadRequest("SeatHeight should be positive");
+            }
+            
+            if (requestSalon.SeatWidth <= 0)
+            {
+                return BadRequest("SeatWidth should be positive");
+            }
+
+            Salon salon = RequestSalonToSalonConverter(requestSalon);
             _appDbContext.salons.Add(salon);
             _appDbContext.SaveChanges();
-            return Created("salon created",salon);
+            return Ok(string.Format("salon created",salon));
         }
 
-         public bool isSalonIdDuplicate(int salonId) {
-            var salonIds = _appDbContext.salons.Select(s => s.Id);
-            foreach (int id in salonIds) {
-                if (salonId == id) {
-                    return true;
-                }
-            }
-            return false;
+        public Salon RequestSalonToSalonConverter(RequestSalon requestSalon){
+            Salon salon = new Salon();
+            salon.Name = requestSalon.Name;
+            salon.SeatHeight = requestSalon.SeatHeight ?? -1;
+            salon.SeatWidth = requestSalon.SeatWidth ?? -1;   
+            return salon;     
         }
+    }
+
+        public class RequestSalon
+    {
+        public string Name { get; set; }
+        public int? SeatWidth { get; set; }
+        public int? SeatHeight { get; set; }
     }
 }
